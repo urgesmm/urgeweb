@@ -1,0 +1,633 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Lauanne;
+  src: url('./fonts/Lausanne-300.woff2');
+}
+
+@font-face {
+  font-family: PP-NEUE;
+  src: url('./fonts/PPNEUEMONTREAL-MEDIUM.88EE7C9.woff2');
+}
+
+:root{
+  /* fonts  */
+  --Lauanne:"Lauanne";
+  --PP-NEUE:"PP-NEUE";
+
+  /* COLORS */
+  --pri-clr:#101010;
+  --sec-clr:#BBBBBB;
+  --pri-light-clr:#3f3f3f;
+  --logo--clr:#ec4e39;
+}
+
+/* Scrollbar ko initially hide karain */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--logo--clr);
+  border-radius: 10px;
+}
+
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* CANVAS  */
+.canvas-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  pointer-events: none; /* Allow scroll while interacting */
+}
+
+.canvas-container canvas {
+  pointer-events: auto; /* Allow canvas-specific events like mouse interaction */
+}
+
+.canvas-container {
+  overflow: visible !important;  /* Ensure that the canvas does not block scroll */
+}
+
+
+.section{
+  width: auto;
+  height: auto;
+  z-index: 10;
+  position: relative;
+}
+
+
+
+/* Basic setup for locomotive scroll */
+[data-scroll-container] {
+  position: relative;
+  overflow: hidden;
+}
+
+.has-scroll-smooth {
+  overflow: hidden;
+}
+
+[data-scroll-section] {
+  position: relative;
+  will-change: transform;
+}
+
+.has-scroll-init, .has-scroll-init [data-scroll-section] {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Ensure that scroll container has correct styling on mobile */
+[data-scroll-container] {
+  overflow: hidden;
+}
+
+
+/* TEXT REVEAL  */
+.text-reveal-container {
+  overflow: hidden;  /* Each word will have its own container with hidden overflow */
+  display: inline-block;  /* Each word wraps into its own block */
+  width: auto;
+  z-index: 100;
+}
+
+.text-reveal-word {
+  display: inline-block;  /* Animate each word individually */
+  transform: translateY(100%);  /* Hidden by default (below the container) */
+  will-change: transform;  /* Optimize for performance */
+}
+
+
+
+.paragraph {
+  display: flex;
+  font-size: 60px;
+  line-height: 1;
+  padding: 40px;
+  max-width: 1280px;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.paragraph .word {
+  position: relative;
+  margin-right: 12px;
+  margin-top: 12px;
+}
+
+.paragraph .word .shadow {
+  position: absolute;
+  opacity: 0.2; /* 20% opacity */
+}
+
+
+/* styles/globals.css */
+.kyc-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.kyc-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.kyc-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.kyc-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: inherit;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(180, 23, 23);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2147483647; /* Maximum possible z-index value */
+}
+
+.progress-bar {
+  width: 80%;
+  height: 10px;
+  background: white;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.start-button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.start-button:hover {
+  background-color: #f0f0f0;
+}
+
+
+.paragraph {
+  display: flex;
+  line-height: 1;
+  padding: 40px;
+  max-width: 1280px;
+  color: var(--pri-clr);
+  flex-wrap: wrap;
+  font-family: var(--PP-NEUE);
+}
+
+.paragraph .word {
+  position: relative;
+  margin-right: 12px;
+  margin-top: 12px;
+}
+
+.paragraph .word .shadow {
+  position: absolute;
+  opacity: 20%;
+}
+
+
+.container {
+    z-index: 1;
+    width: 100%;
+}
+
+
+.titles {
+    width: 100%;
+    border-top: 1px solid rgba(183, 171, 152, 0.25);
+}
+
+.title {
+    border-bottom: 1px solid rgba(183, 171, 152, 0.25);
+    cursor: default;
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper {
+    display: inline-block;
+}
+
+.wrapper p {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    font-family: var(--PP-NEUE);
+}
+
+.wrapper p:nth-of-type(2) {
+    display: block;
+    position: absolute;
+    color: #7a7a7a;
+    top: 0;
+    z-index: 1;
+    font-family: var(--PP-NEUE);
+}
+
+
+.main {
+    height: 100vh;
+    background-color: var(--pri-clr);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main img {
+    height: 100%;
+}
+
+
+/* Page transitions */
+/* Preloader animation */
+.preloader-container {
+  position: fixed;
+  z-index: 2147483647; /* Maximum possible z-index value */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Preloader container styling */
+.preloader-container {
+  background-color: var(--sec-clr); /* Use the secondary color directly */
+  transform: translateY(0%); /* Already in position */
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); /* Transition for animations */
+  z-index: 2147483647; /* Maximum possible z-index value */
+}
+
+/* First layer - primary color (keep this for layered effect) */
+.preloader-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--sec-clr);
+  transform: translateY(0%); /* Already in position */
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); /* Keep transition for animations */
+  z-index: 1;
+}
+
+/* Enter state - static display */
+.preloader-container.enter {
+  transform: translateY(0%);
+  transition: none; /* No transition for entry */
+}
+
+.preloader-container.enter::before {
+  transform: translateY(0%);
+  transition: none; /* No transition for entry */
+}
+
+/* Pause state - maintain position */
+.preloader-container.pause {
+  transform: translateY(0%);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.preloader-container.pause::before {
+  transform: translateY(0%);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Exit animations */
+.preloader-container.exit {
+  transform: translateY(-100%);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0s; /* No delay for container exit */
+}
+
+.preloader-container.exit::before {
+  transform: translateY(-100%);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0.1s; /* Delay the first layer exit */
+}
+
+/* Logo container */
+.preloader-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2147483647; /* Maximum possible z-index value */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1; /* Visible from the start */
+  transition: opacity 0.5s ease;
+}
+
+.preloader-container.enter .preloader-logo {
+  /* Already visible, no change needed */
+  opacity: 1;
+}
+
+.preloader-container.exit .preloader-logo {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+/* Page transition styles */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0; /* Start with no height in default state */
+  z-index: 2147483647; /* Maximum possible z-index value */
+  pointer-events: none;
+  overflow: hidden !important; /* Critical to contain the text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* Add a containing block for absolutely positioned children */
+  contain: layout paint size;
+  background-color: var(--sec-clr); /* Use secondary color directly */
+  bottom: 0; /* Position at bottom for entry */
+  transition: none; /* No transition initially */
+}
+
+/* First layer - primary color */
+.page-transition::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0; /* Start with no height */
+  bottom: 0; /* Position at bottom for entry */
+  background-color: var(--sec-clr);
+  transition: none; /* No transition initially */
+  z-index: 1; /* Below the container */
+}
+
+/* Enter animations */
+.page-transition.enter,
+.page-transition.pause {
+  background-color: var(--sec-clr);
+  height: 100vh; /* Full height */
+  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0.1s; /* Delay for main container entry */
+}
+
+.page-transition.enter::before,
+.page-transition.pause::before {
+  height: 100%; /* Grow to full height */
+  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0s; /* No delay for first layer entry */
+}
+
+/* Exit animations */
+.page-transition.exit {
+  height: 0; /* Shrink to no height */
+  bottom: auto; /* Position at top for exit */
+  top: 0;
+  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0s; /* No delay for main container exit */
+}
+
+.page-transition.exit::before {
+  height: 0; /* Shrink to no height */
+  bottom: auto; /* Position at top for exit */
+  top: 0;
+  transition: height 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: 0.1s; /* Delay the first layer exit */
+}
+
+/* Hide text when transition is not active */
+.page-transition.none .transition-mask-container {
+  display: none;
+}
+
+.transition-mask-container {
+  position: absolute;
+  z-index: 3;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--pri-clr);
+  font-family: var(--PP-NEUE);
+  overflow: hidden !important; /* Ensure text doesn't overflow */
+  pointer-events: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  max-height: 80vh; /* Limit height to ensure it stays within the page transition */
+}
+
+.transition-word-wrapper {
+  overflow: hidden !important; /* Critical for the mask effect and containment */
+  display: inline-block;
+  margin: 0 0.2rem;
+  max-width: 100%; /* Ensure words don't overflow */
+}
+
+.transition-word {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  will-change: transform;
+  white-space: normal !important; /* Allow text to wrap if needed */
+  word-break: break-word !important; /* Break long words if necessary */
+  max-width: 100%; /* Ensure words don't overflow */
+}
+
+/* Keep text visible during exit animation */
+.page-transition.exit .transition-mask-container {
+  opacity: 1;
+}
+
+/* FramerAirplane container styles */
+.framer-airplane-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: 1; /* Lower z-index to prevent conflicts */
+  overflow: hidden;
+  isolation: isolate; /* Create a new stacking context */
+}
+
+/* Responsive font size for smaller screens */
+@media (max-width: 768px) {
+  .transition-word {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .transition-word {
+    font-size: 1.5rem;
+  }
+}
+
+/* Lottie animation container */
+.lottie-center {
+  display: block;
+  margin: 0 auto;
+}
+
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem 1rem;
+  gap: 0.5rem;
+  height: 2.5rem;
+  width: auto;
+  border-radius: 5rem;
+}
+
+.btn-link-wrapper span {
+  font-size: 1rem;
+  text-align: center;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+.btn-wrapper:hover span {
+  transform: translateY(-1rem);
+}
+
+.btn-link-wrapper {
+  height: 1rem;
+  overflow: hidden;
+
+}
+
+.btn-svg-wrapper {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  transition: 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* overflow: hidden; */
+}
+
+.btn-svg-wrapper svg {
+transform: translateX(-4rem);
+transition: 0.5s ease;
+z-index: 1000;
+}
+
+.btn-wrapper:hover .btn-svg-wrapper {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.btn-wrapper:hover svg {
+  transform: translateX(0rem);
+  width: 1rem;
+  height: 1rem;
+}
+
+.image-wrapper {
+  overflow: hidden;
+}
+.imageParallax img {
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+  background-position: center;
+}
+
+/* Loading indicator styles */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-left-color: var(--pri-clr);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

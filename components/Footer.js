@@ -45,8 +45,8 @@ function Footer() {
      
           <div className="uppercase font-pp-neue text-sec-clr text-1xl flex items-start justify-center ">
             <TextReveal
-              linkText="info@URGE MANAGEMENT.com"
-          linkHref="mailto:info@URGE MANAGEMENT.com"
+              linkText="info@URGEMANAGEMENT.com"
+          linkHref="mailto:info@urgemanagement.com"
               tag="div"
             />
           </div>

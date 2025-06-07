@@ -45,8 +45,8 @@ function Footer() {
      
           <div className="uppercase font-pp-neue text-sec-clr text-1xl flex items-start justify-center ">
             <TextReveal
-              linkText="info@urgeofimmigration.com"
-          linkHref="mailto:info@urgeofimmigration.com"
+              linkText="info@URGE MANAGEMENT.com"
+          linkHref="mailto:info@URGE MANAGEMENT.com"
               tag="div"
             />
           </div>
@@ -62,7 +62,7 @@ function Footer() {
  
 
   <div className="hover:text-[#E4405F] transition-colors duration-300">
-    <TextReveal linkHref="https://www.instagram.com/urgeofimmigration_visa/" iconName="instagram"
+    <TextReveal linkHref="https://www.instagram.com/URGE MANAGEMENT_visa/" iconName="instagram"
              duration={1.3}
                     delay={0.1}
                      yAxis="150%" />

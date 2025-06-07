@@ -146,7 +146,7 @@ const Navbar = () => {
         <div className="hidden md:block text-right">
           <div className="h-full flex items-end py-5 whitespace-nowrap justify-end">
           <Button
-        href="https://business.mamopay.com/pay/urgeofimmigrationvis-243386"
+        href="https://business.mamopay.com/pay/URGE MANAGEMENTvis-243386"
         svgIcon={<PaymentIcon />}
         textOne="INSTANT PAYMENT"
         textTwo="INSTANT PAYMENT"
@@ -238,7 +238,7 @@ const Navbar = () => {
 
                 <div className="h-full flex items-end py-5">
                 <Button
-        href="https://business.mamopay.com/pay/urgeofimmigrationvis-243386"
+        href="https://business.mamopay.com/pay/URGE MANAGEMENTvis-243386"
         svgIcon={<PaymentIcon />}
         textOne="INSTANT PAYMENT"
         textTwo="INSTANT PAYMENT"

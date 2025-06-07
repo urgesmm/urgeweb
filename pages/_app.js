@@ -424,7 +424,7 @@ function MyApp({ Component, pageProps, resetLoading, modelsLoading, modelLoading
         <meta property="og:title" content="URGE MANAGEMENT | Trusted Visa Consultancy" />
         <meta property="og:description" content="Explore visa options and immigration support with URGE MANAGEMENT. Discover paths for study, work, and living abroad." />
         <meta property="og:image" content="/images/default-OG.jpg" /> {/* Ensure this image path is correct */}
-        <meta property="og:url" content="https://urgeofimmigration.com" />
+        <meta property="og:url" content="https://URGE MANAGEMENT.com" />
         <link rel="icon" href="/LOGO.svg" />
 
         {/* Meta tags end */}

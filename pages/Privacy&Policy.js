@@ -59,7 +59,7 @@ const Privacy = () => {
         </div>
 <div className='py-3'>
               <MaskText
-              text="Merchant takes appropriate steps to ensure data privacy and security including through various hardware and software methodologies. However, (www.urgeofimmigration.com) cannot guarantee the security of any information that is disclosed online."
+              text="Merchant takes appropriate steps to ensure data privacy and security including through various hardware and software methodologies. However, (www.URGE MANAGEMENT.com) cannot guarantee the security of any information that is disclosed online."
               className="text-pri-clr font-pp-neue text-base sm:text-lg md:text-2xl lg:text-3xl"
             />
         </div>
